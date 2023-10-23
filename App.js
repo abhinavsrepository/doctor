@@ -3,7 +3,9 @@ import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import Login from "./App/Screens/Login";
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
 import SignInWithOAuth from "./Components/SignInWithOAuth";
-import Home from './App/Screens/'
+import {NavigationContainer} from '@react-navigation/native'
+import Home from './App/Screens/Home'
+import TabNavigation from "./App/Navigations/TabNavigation";
 export default function App() {
   return (
     <ClerkProvider
@@ -13,10 +15,12 @@ export default function App() {
     >
       <SafeAreaView style={styles.container}>
         <SignedIn>
-          <Hom/>
+          <NavigationContainer>
+            <TabNavigation/>
+            </NavigationContainer>
         </SignedIn>
         <SignedOut>
-          <SignInWithOAuth/>
+          <Login/>
         </SignedOut>
       </SafeAreaView>
     </ClerkProvider>
@@ -27,7 +31,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+   
   },
 });
